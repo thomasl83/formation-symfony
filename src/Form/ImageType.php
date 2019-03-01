@@ -27,6 +27,7 @@ class ImageType extends AbstractType
                 'caption',
                 TextType::class,
                 [
+                    'label' => "Légende",
                     'attr' => [
                         'placeholder' => "Titre de l'image"
                     ]

@@ -11,7 +11,7 @@
             <h1>{{ ad.title }}</h1>
             <p>{{ ad.introduction }}</p>
             <p class="h2">
-                <strong>{{ ad.rooms }} chambre{% if ad.rooms > 1 %}s{% endif %}</strong> pour <strong>{{ ad.price }}&euro;</strong> par nuit
+                <strong>{{ ad.rooms }} chambre{% if ad.rooms > 1 %}s{% endif %}</strong> pour <strong>{{ ad.price | number_format(2, ',', ' ')}}&euro;</strong> par nuit
             </p>
             <a href="{{ path('booking_create', {'slug': ad.slug}) }}" class="btn btn-primary">Réserver</a>
             {% if app.user == ad.author %}
@@ -53,6 +53,53 @@
                         <span class="sr-only">Suivant</span>
                     </a>
                 </div>
+
+                <hr>
+
+                {% if ad.comments | length > 0 %}
+                    <h2 class="mb-3">Commentaires de nos voyageurs :</h2>
+
+                    <div class="alert alert-info">
+                        <h4 class="alert-heading text-center">
+                            <div class="row align-items-center">
+                                <div class="col-6">
+                                    Note globale donnée par nos voyageurs 
+                                </div>
+                                <div class="col-6">
+                                    {% include "shared/rating.html.twig" with{'rating': ad.avgRatings} %} {# <small>{{ ad.avgRatings }}</small> #}
+                                    <br>
+                                    <small>(Calculée sur {{ ad.comments | length }} avis)</small>
+                                </div>
+                            </div>
+                        </h4>
+                    </div>
+
+                    {% for comment in ad.comments %}
+                        <div class="row bg-secondary rounded mb-3 py-3 px-3 align-items-center">
+                            {% set a = comment.author %}
+                            {% set url = path('user_show', {'slug': a.slug}) %}
+
+                            <div class="col-3 col-lg-2">
+                                <a href="{{ url }}">
+                                    <img src="{{ a.picture }}" class="avatar avatar-medium" alt="Avatar de {{ a.fullName }}">
+                                </a>
+                            </div>
+                            <div class="col">
+                                <strong>{{ a.firstName }}</strong> a dit :
+                                <blockquote>
+                                    {{ comment.content }}
+                                </blockquote>
+                                <strong>Note donnée : </strong>
+
+                                {% include "shared/rating.html.twig" with{'rating': comment.rating} %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <hr>
+                {% else %}
+                    <h2>Cette annonce n'a pas encore reçu de commentaires.</h2>
+                {% endif %}
+                
             </div>
             <div class="col">
                 {% set a = ad.author %}
@@ -60,7 +107,7 @@
                 {% set url = path('user_show', {'slug': a.slug}) %}
 
                 <div class="row mb-3 align-items-center">
-                    <div class="col-3">
+                    <div class="col-2 col-md-4">
                         <a href="{{ url }}">
                             <img src="{{ a.picture }}" class="avatar avatar-medium" alt="Avatar de {{ a.fullName }}">
                         </a>

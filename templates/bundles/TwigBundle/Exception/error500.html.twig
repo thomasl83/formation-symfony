@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Erreur interne{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Oups ! Une erreur s'est produite ..</h1>
+        <p>Quelque chose ne fonctionne pas, nous allons faire le nécessaire pour réparer ça ua plus vite !</p>
+        <a href="{{ path('homepage') }}" class="btn btn-primary">Retour à l'accueil</a>
+        <a href="{{ path('ads_index') }}" class="btn btn-success">Nos annonces</a>
+    </div>
+{% endblock %}

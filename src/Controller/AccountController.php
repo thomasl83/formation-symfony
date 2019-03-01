@@ -185,6 +185,7 @@ class AccountController extends AbstractController
      * Permet d'afficher la liste des reservations faites par un utilisateur
      *
      * @Route("/account/bookings", name="account_bookings")
+     * @IsGranted("ROLE_USER")
      * 
      * @return Response
      */
