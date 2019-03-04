@@ -47,7 +47,7 @@ class AppFixtures extends Fixture
         $users = [];
         $genres = ['male', 'female'];
         
-        for ($i=1; $i <= 10; $i++) { 
+        for ($i=1; $i <= 25; $i++) { 
             $user = new User();
             
             $genre = $faker->randomElement($genres);
@@ -75,7 +75,7 @@ class AppFixtures extends Fixture
 
 
         // Nous gérons les annonces
-        for ($i=1; $i <= 30; $i++) { 
+        for ($i=1; $i <= 50; $i++) { 
         
             $ad = new Ad();
 
@@ -106,7 +106,7 @@ class AppFixtures extends Fixture
         
             //Gestion des réservations
 
-            for ($j=0; $j <= mt_rand(0, 10); $j++) { 
+            for ($j=0; $j <= mt_rand(0, 15); $j++) { 
                 $booking = new Booking();
 
                 $createdAt = $faker->dateTimeBetween('-6 months');
