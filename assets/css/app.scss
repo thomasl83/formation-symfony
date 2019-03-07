@@ -1,3 +1,5 @@
+@import url('./bootstrap.min.css');
+
 @media (max-width: 575.98px) { 
     h4 {
         font-size: 1.2em;
@@ -18,18 +20,22 @@
         max-width: 70px;
         max-height: 70px;
         border-radius: 50%;
-    }
-    .avatar-medium {
-        max-width: 48px;
-        max-height: 48px;
-    }
-    .avatar-mini {
-        max-width: 32px;
-        max-height: 32px;
-    }
-    .avatar-micro {
-        max-width: 24px;
-        max-height: 24px;
+
+        &.avatar-medium {
+            max-width: 48px;
+            max-height: 48px;
+        }
+
+        &.avatar-mini {
+            max-width: 32px;
+            max-height: 32px;
+        }
+
+        &.avatar-micro {
+            max-width: 24px;
+            max-height: 24px;
+        }
+
     }
 
     .btn {
@@ -46,25 +52,26 @@
         max-width: 128px;
         max-height: 128px;
         border-radius: 50%;
+
+        &.avatar-medium {
+            max-width: 64px;
+            max-height: 64px;
+        }
+    
+        &.avatar-mini {
+            max-width: 32px;
+            max-height: 32px;
+        }
+    
+        &.avatar-micro {
+            max-width: 24px;
+            max-height: 24px;
+        }
     }
 
-    .avatar-medium {
-        max-width: 64px;
-        max-height: 64px;
-    }
-
-    .avatar-mini {
-        max-width: 32px;
-        max-height: 32px;
-    }
-
-    .avatar-micro {
-        max-width: 24px;
-        max-height: 24px;
-    }
 }
 
-div.container {
+div.container, div.container-fluid {
     margin-top: 20px;
 }
 
@@ -72,17 +79,16 @@ div.ad-title {
     padding: 2em;
     background-size: cover;
     background-position: center center;
-}
 
-div.ad-title h1, div.ad-title p {
-    color: white;
-    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
-}
+    h1, p {
+        color: white;
+        text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+    }
 
-div.ad-title .btn {
-    margin-top: 2em;
-    font-size: 1.5em;
-    line-height: 1.5em;
+    .btn {
+        font-size: 1.2em;
+        line-height: 1.5em;
+    }
 }
 
 div.carousel-caption {
@@ -97,12 +103,15 @@ span.rating i {
     color: goldenrod;
 }
 
-.alert a {
-    text-decoration: none;
-}
+.alert {
+    
+    a {
+        text-decoration: none;
+    }
 
-.alert .btn {
-    color: white;
+    .btn {
+        color: white;
+    }
 }
 
 .badge-admin {
